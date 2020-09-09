@@ -135,6 +135,16 @@
     display: none;
     font-family: 'Lobster', cursive;
     font-size: 42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    opacity: 0;
+    transition: .5s;
+    padding: 30px;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .checkbox-label {
@@ -156,7 +166,7 @@
     margin-right: 10px;
     cursor: pointer;
 
-    &:checked:after {
+    &:checked::after {
         content: '\2714';
         font-size: 18px;
         position: absolute;
@@ -168,4 +178,31 @@
 
 input {
     outline: none;
+}
+
+.form-item-wrapper {
+    position: relative;
+}
+
+.invalid-msg {
+    font-size: 11px;
+    color: red;
+    position: absolute;
+    bottom: -15px;
+    width: 100%;
+    margin: 0;
+    display: none;
+}
+
+.invalid {
+    border: 1px solid red;
+}
+
+@media (max-width: 650px) {
+
+    .popup input:not([type="checkbox"]),
+    .checkbox-label {
+        margin-top: 30px;
+    }
+
 }

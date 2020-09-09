@@ -22,12 +22,24 @@
     <!-- Here goes your popup form HTML code -->
     <div class="close-btn"></div>
     <h2>Login</h2>
-    <form role="form">
-      <input type="email" placeholder="E-mail" required>
-      <input type="password" placeholder="Password" required>
-      <label class="checkbox-label"><input class="popup-checkbox" type="checkbox" required>I agree to terms &amp;
-        conditions.</label>
-      <input type="submit" value="submit">
+    <form class="popup-form" name="PopupForm" role="form">
+      <div class="form-item-wrapper form-email-wrapper">
+        <input type="email" name="email" placeholder="E-mail">
+        <p class="invalid-msg">Please provide e-mail adddress.</p>
+      </div>
+      <div class="form-item-wrapper form-pass-wrapper">
+        <input type="password" name="password" placeholder="Password">
+        <p class="invalid-msg">Please provide password.</p>
+      </div>
+      <div class="form-item-wrapper form-check-wrapper">
+        <label class="checkbox-label">
+          <input class="popup-checkbox" type="checkbox" name="checkbox">
+          I agree to terms &amp; conditions.
+        </label>
+        <p class="invalid-msg">Please accept terms &amp; conditions.</p>
+      </div>
+
+      <input id="popup-submit" type="submit" value="submit">
     </form>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
