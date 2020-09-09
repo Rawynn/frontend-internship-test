@@ -54,6 +54,7 @@ $(document).ready(function () {
         let checkbox = $('.popup-checkbox').is(':checked');
 
         if (validateForm(email, password, checkbox)) {
+            $('.close-btn').unbind("click");
             setTimeout(function () {
                 $('.popup').css("animation", "up 1s forwards");
                 $('.success-msg').css(
@@ -69,7 +70,6 @@ $(document).ready(function () {
         let email = document.forms["PopupForm"]["email"].value;
         let password = document.forms["PopupForm"]["password"].value;
         let checkbox = $('.popup-checkbox').is(':checked');
-        console.log("zmiana");
         validateForm(email, password, checkbox);
     });
 
