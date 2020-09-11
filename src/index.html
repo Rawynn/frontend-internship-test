@@ -14,7 +14,7 @@
 
 <body>
   <section class="main">
-    <button id="show-popup-form" class="btn btn-main">Click me!</button>
+    <button id="show-popup-form" class="btn btn-main btn-show-popup">Click me!</button>
     <!-- Display success message below -->
     <p class="success-msg">Thank you!</p>
   </section>
@@ -23,17 +23,18 @@
     <div class="close-btn"></div>
     <h2>Login</h2>
     <form class="popup-form" name="PopupForm" role="form">
-      <div class="form-item-wrapper form-email-wrapper">
+      <div class="popup-form-item popup-form-item-email">
         <input type="email" name="email" placeholder="E-mail">
         <p class="invalid-msg">Please provide e-mail adddress.</p>
       </div>
-      <div class="form-item-wrapper form-pass-wrapper">
+      <div class="popup-form-item popup-form-item-pass">
+        <label for=""></label>
         <input type="password" name="password" placeholder="Password">
         <p class="invalid-msg">Please provide password.</p>
       </div>
-      <div class="form-item-wrapper form-check-wrapper">
-        <label class="checkbox-label">
-          <input class="popup-checkbox" type="checkbox" name="checkbox">
+      <div class="popup-form-item popup-form-item-check">
+        <input id="popup-checkbox" type="checkbox" name="checkbox">
+        <label for="popup-checkbox" class="checkbox-label">
           I agree to terms &amp; conditions.
         </label>
         <p class="invalid-msg">Please accept terms &amp; conditions.</p>

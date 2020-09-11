@@ -1,5 +1,5 @@
 /* Here goes your JS code */
-$(document).ready(function () {
+$(function () {
     $('#show-popup-form').on("click", function () {
         $(this).css("opacity", "0");
         $('.popup').css("animation", "down 1s forwards .5s");
@@ -21,26 +21,29 @@ $(document).ready(function () {
 
     function validateForm(email, password, checkbox) {
         let valid = true;
+        let mailError = $('.popup-form-item-email .invalid-msg');
+        let passError = $('.popup-form-item-pass .invalid-msg');
+        let checkboxError = $('.popup-form-item-check .invalid-msg');
 
-        if (email == '' || !validateEmail(email)) {
-            $('.form-email-wrapper .invalid-msg').show("slow");
+        if (email === '' || !validateEmail(email)) {
+            mailError.show("slow");
             valid = false;
         } else {
-            $('.form-email-wrapper .invalid-msg').hide("slow");
+            mailError.hide("slow");
         }
 
-        if (password == '' || password.length <= 4) {
-            $('.form-pass-wrapper .invalid-msg').show("slow");
+        if (password === '' || password.length <= 4) {
+            passError.show("slow");
             valid = false;
         } else {
-            $('.form-pass-wrapper .invalid-msg').hide("slow");
+            passError.hide("slow");
         }
 
         if (!checkbox) {
-            $('.form-check-wrapper .invalid-msg').show("slow");
+            checkboxError.show("slow");
             valid = false;
         } else {
-            $('.form-check-wrapper .invalid-msg').hide("slow");
+            checkboxError.hide("slow");
         }
 
         return valid;
@@ -49,16 +52,15 @@ $(document).ready(function () {
     $('.popup-form').submit(function (e) {
         e.preventDefault();
 
-        let email = document.forms["PopupForm"]["email"].value;
-        let password = document.forms["PopupForm"]["password"].value;
-        let checkbox = $('.popup-checkbox').is(':checked');
+        let email = $('.popup-form input[type="email"').val();
+        let password = $('.popup-form input[type="password"').val();
+        let checkbox = $('#popup-checkbox').is(':checked');
 
         if (validateForm(email, password, checkbox)) {
             $('.close-btn').unbind("click");
             setTimeout(function () {
                 $('.popup').css("animation", "up 1s forwards");
-                $('.success-msg').css(
-                    "display", "block");
+                $('.success-msg').css("display", "block");
                 setTimeout(function () {
                     $('.success-msg').css("opacity", "1");
                 }, 1500);
@@ -66,17 +68,17 @@ $(document).ready(function () {
         }
     });
 
-    $('.form-item-wrapper input').bind("keyup", function () {
-        let email = document.forms["PopupForm"]["email"].value;
-        let password = document.forms["PopupForm"]["password"].value;
-        let checkbox = $('.popup-checkbox').is(':checked');
+    $('.popup-form-item input').bind("keyup", function () {
+        let email = $('.popup-form input[type="email"').val();
+        let password = $('.popup-form input[type="password"').val();
+        let checkbox = $('#popup-checkbox').is(':checked');
         validateForm(email, password, checkbox);
     });
 
-    $('.popup-checkbox').on("click", function () {
-        let email = document.forms["PopupForm"]["email"].value;
-        let password = document.forms["PopupForm"]["password"].value;
-        let checkbox = $('.popup-checkbox').is(':checked');
+    $('#popup-checkbox').on("click", function () {
+        let email = $('.popup-form input[type="email"').val();
+        let password = $('.popup-form input[type="password"').val();
+        let checkbox = $('#popup-checkbox').is(':checked');
         validateForm(email, password, checkbox);
     });
 });

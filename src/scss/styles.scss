@@ -3,7 +3,7 @@
 
 @keyframes down {
     0% {
-        top: -50%
+        top: -50%;
     }
 
     60% {
@@ -22,7 +22,7 @@
 
 @keyframes up {
     0% {
-        top: 50%
+        top: 50%;
     }
 
     20% {
@@ -35,15 +35,9 @@
 
 }
 
-#show-popup-form {
+.btn-show-popup {
     opacity: 1;
     transition: .5s;
-
-}
-
-.popup h2 {
-    font-family: 'Lobster', cursive;
-    margin: 0;
 }
 
 .popup {
@@ -61,6 +55,11 @@
         box-sizing: border-box;
     }
 
+    h2 {
+        font-family: 'Lobster', cursive;
+        margin: 0;
+    }
+
     .close-btn {
         position: absolute;
         right: -10px;
@@ -70,15 +69,14 @@
         background-color: #000;
         border-radius: 50%;
         cursor: pointer;
-        // transform: translate(0);
-        transition: transform 0.5s;
+        transition: transform .5s;
         display: flex;
         justify-content: center;
         align-items: center;
 
         &::before,
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             height: 18px;
             width: 5px;
@@ -86,12 +84,10 @@
         }
 
         &::before {
-
             transform: rotate(45deg);
         }
 
         &::after {
-
             transform: rotate(-45deg);
         }
 
@@ -101,23 +97,20 @@
     }
 
 
-    input:not([type="checkbox"]) {
+    input:not([type='checkbox']) {
         width: 100%;
         padding: 15px;
         margin-top: 20px;
         border: 1px solid #000;
-    }
-
-    input:not(.popup-checkbox) {
         display: block;
     }
 
-    input[type="email"],
-    input[type="password"] {
+    input[type='email'],
+    input[type='password'] {
         padding-left: 25px;
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
         cursor: pointer;
         background-color: #000;
         color: #fff;
@@ -127,6 +120,39 @@
         &:hover {
             background-color: #fc888e;
             border: 1px solid #fc888e
+        }
+    }
+}
+
+.popup-form {
+    &-item {
+        position: relative;
+
+        input[type='checkbox'] {
+            display: inline-block;
+            -webkit-appearance: none;
+            border: 1px solid #000;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .05), inset 0px -15px 10px -12px rgba(0, 0, 0, .05);
+            padding: 8px;
+            position: relative;
+            margin-right: 10px;
+            cursor: pointer;
+
+            &:checked::after {
+                content: '\2714';
+                font-size: 18px;
+                position: absolute;
+                top: -5px;
+                left: 1px;
+                color: #000;
+            }
+        }
+
+        &-check {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            min-width: 200px;
         }
     }
 }
@@ -149,39 +175,10 @@
 
 .checkbox-label {
     cursor: pointer;
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    min-width: 200px;
-}
-
-
-.popup-checkbox {
-    display: inline-block;
-    -webkit-appearance: none;
-    border: 1px solid #000;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-    padding: 8px;
-    position: relative;
-    margin-right: 10px;
-    cursor: pointer;
-
-    &:checked::after {
-        content: '\2714';
-        font-size: 18px;
-        position: absolute;
-        top: -5px;
-        left: 1px;
-        color: #000;
-    }
 }
 
 input {
     outline: none;
-}
-
-.form-item-wrapper {
-    position: relative;
 }
 
 .invalid-msg {
@@ -200,7 +197,7 @@ input {
 
 @media (max-width: 650px) {
 
-    .popup input:not([type="checkbox"]),
+    .popup input:not([type='checkbox']),
     .checkbox-label {
         margin-top: 30px;
     }
